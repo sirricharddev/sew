@@ -1,5 +1,5 @@
-<?php
 
+<?php
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -876,4 +876,9 @@ Route::prefix('frontend')->name('frontend.')->middleware(['installed', 'apiKey',
     Route::prefix('outlet')->name('outlet.')->group(function () {
         Route::get('/', [FrontendOutletController::class, 'index']);
     });
+});
+
+Route::prefix('admin/setting/product-category')->group(function () {
+    Route::get('/', [\App\Http\Controllers\Admin\ProductCategoryController::class, 'index']);
+    Route::get('/depth-tree', [\App\Http\Controllers\Admin\ProductCategoryController::class, 'depthTree']);
 });
